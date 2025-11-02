@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <script>
+        function validate() {
+    let f = document.f1;
+    // Username
+    if (f.username.value.trim().length < 8) {
+        alert("Enter Username (min 8 chars)");
+        f.username.focus();
+        return false;
+    }
+    // Password
+    if (f.password.value.trim().length < 6) {
+        alert("Password must be at least 6 characters");
+        f.password.focus();
+        return false;
+    }
+    // Email
+    let email = f.email.value.trim();
+    if (email === "" || !email.includes("@")) {
+        alert("Enter a valid Email");
+        f.email.focus();
+        return false;
+    }
+    // Phone
+    let ph = f.phno.value.trim();
+    if (ph === "" || isNaN(ph) || ph.length != 10) {
+        alert("Enter valid 10-digit Phone Number");
+        f.phno.focus();
+        return false;
+    }
+    // Gender
+    if (![...f.gen].some(r => r.checked)) {
+        alert("Please choose a Gender");
+        return false;
+    }
+    // Language
+    if (![...f.lang].some(c => c.checked)) {
+        alert("Select at least one Language");
+        return false;
+    }
+    // Address
+    if (f.address.value.trim() === "") {
+        alert("Enter Address");
+        f.address.focus();
+        return false;
+    }
+    alert("Registration Successful");
+}
+    </script>
+    <style>
+        body { text-align: center; padding: 20px; }
+        table { margin: auto; }
+    </style>
+</head>
+<body>
+    <h3>Registration Form</h3><br>
+    <form name="f1">
+        <table >
+            <tr>
+                <td>User Name*</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password*</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Email ID*</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Phone Number*</td>
+                <td><input type="text" name="phno"></td>
+            </tr>
+            <tr>
+                <td>Gender*</td>
+                <td>
+                    <input type="radio" name="gen" value="Male"> Male
+                    <input type="radio" name="gen" value="Female"> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Language Known*</td>
+                <td>
+                    <input type="checkbox" name="lang" value="English"> English<br>
+                    <input type="checkbox" name="lang" value="Telugu"> Telugu<br>
+                    <input type="checkbox" name="lang" value="Hindi"> Hindi<br>
+                    <input type="checkbox" name="lang" value="Tamil"> Tamil
+                </td>
+            </tr>
+            <tr>
+                <td>Address*</td>
+                <td><textarea name="address"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" value="SUBMIT" onclick="validate()">
+                    <input type="reset" value="RESET">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <font color="red">* Fields are mandatory</font>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
